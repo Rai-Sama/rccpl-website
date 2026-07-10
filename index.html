@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RCCPL | Rai Construction Consultancy Pvt. Ltd.</title>
+    <style>
+        :root {
+            --primary-color: #0B2545; /* Deep Corporate Navy */
+            --secondary-color: #F26419; /* High-Visibility Construction Orange */
+            --accent-color: #134074; /* Slate Blue */
+            --text-color: #333333;
+            --bg-light: #EEF4F8;
+            --white: #FFFFFF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--white);
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--primary-color);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 1.6rem;
+            color: var(--white);
+            letter-spacing: 1px;
+        }
+
+        header h1 span {
+            color: var(--secondary-color);
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            /* Fallback background color if image fails to load, followed by the relative path */
+            background: linear-gradient(rgba(11, 37, 69, 0.85), rgba(19, 64, 116, 0.75)), url('hero-bg.jpg') no-repeat center center/cover;
+            height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+            margin-top: 60px;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            max-width: 800px;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: var(--white);
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            background: #e65c00;
+            transform: translateY(-2px);
+        }
+
+        /* Section Global Styles */
+        section {
+            padding: 5rem 10%;
+        }
+
+        .bg-light {
+            background: var(--bg-light);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 3.5rem;
+            color: var(--primary-color);
+            position: relative;
+            text-transform: uppercase;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary-color);
+            margin: 10px auto 0 auto;
+        }
+
+        /* Layout Utilities */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: flex-start;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        /* Founder Profile Layout */
+        .founder-card {
+            background: var(--white);
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+            border-top: 4px solid var(--secondary-color);
+        }
+
+        .founder-img-container {
+            width: 100%;
+            background: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #718096;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .founder-img-container img {
+            width: 100%;
+            height: auto;            
+            display: block; 
+        }
+
+        .founder-details {
+            padding: 25px;
+        }
+
+        .founder-details h4 {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        /* Values Row */
+        .values-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 30px;
+            border-radius: 4px;
+        }
+
+        .value-item {
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .value-item h4 {
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        /* Services Grid */
+        .card {
+            background: var(--white);
+            padding: 30px 25px;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 3px solid transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border-top: 3px solid var(--secondary-color);
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.25rem;
+        }
+
+        .card ul {
+            list-style: none;
+            text-align: left;
+        }
+
+        .card ul li {
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .card ul li::before {
+            content: "▪";
+            color: var(--secondary-color);
+            position: absolute;
+            left: 0;
+        }
+
+        /* Projects List Table & Badges */
+        .project-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: var(--white);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .project-table th, .project-table td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .project-table th {
+            background-color: var(--accent-color);
+            color: var(--white);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        .project-table tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        .badge {
+            background: #E1EBF5;
+            color: var(--accent-color);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Contact Section */
+        .contact-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            background: var(--white);
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: 4px;
+        }
+
+        .contact-form input, .contact-form textarea {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .contact-form input:focus, .contact-form textarea:focus {
+            border-color: var(--accent-color);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2.5rem 5%;
+            font-size: 0.9rem;
+            border-top: 3px solid var(--secondary-color);
+        }
+
+        /* Responsive Breakpoints */
+        @media(max-width: 992px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            section {
+                padding: 4rem 5%;
+            }
+        }
+
+        @media(max-width: 768px) {
+            .hero h2 {
+                font-size: 2.3rem;
+            }
+            header {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem;
+            }
+            nav {
+                margin-top: 12px;
+            }
+            nav a {
+                margin: 0 8px;
+                font-size: 0.85rem;
+            }
+            .hero {
+                margin-top: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header>
+        <h1>RCCPL <span>Consultancy</span></h1>
+        <nav>
+            <a href="#about">About Us</a>
+            <a href="#services">Our Services</a>
+            <a href="#projects">Key Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h2>Building India</h2>
+        <p>Project Management Consultancy firm dedicated to maximizing client value through diligent representation of construction, design, and infrastructure interests.</p>
+        <a href="#contact" class="btn">Connect With Our Experts</a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Our Firm</h2>
+        <div class="grid-2">
+            <div>
+                <h3>Rai Construction Consultancy Private Limited</h3>
+                <p style="margin-top: 15px; text-align: justify;">
+                    RCCPL leverages over three decades of professional domain experience, cutting-edge technology, and strong strategic relationships to mitigate execution risk, drive engineering innovation, optimize structural costs, and guarantee high-quality results.
+                </p>
+                <p style="margin-top: 15px; text-align: justify;">
+                    As custodians of our clients' long-term commercial aspirations, we go significantly beyond simple execution to reshape the modern urban landscape across residential high-rises and critical heavy infrastructure initiatives.
+                </p>
+                
+                <div class="values-container">
+                    <div class="value-item"><h4>Integrity</h4></div>
+                    <div class="value-item"><h4>Innovation</h4></div>
+                    <div class="value-item"><h4>Quality</h4></div>
+                    <div class="value-item"><h4>Environmental Sensitivity</h4></div>
+                </div>
+            </div>
+            <div>
+                <!-- Founder Profile Card with Image Integration -->
+                <div class="founder-card">
+                    <div class="founder-img-container">
+                        <!-- If founder.jpg exists in the folder, it shows up here. If missing, this text shows. -->
+                        <img src="founder.jpg" alt="Anil Kumar Rai - Founder of RCCPL" onerror="this.style.display='none'">
+                    </div>
+                    <div class="founder-details">
+                        <h4>Anil Kumar Rai</h4>
+                        <p style="color: #666; font-size: 0.9rem; font-weight: 600; margin-bottom: 10px;">Founder & Lead Consultant | B.E. Civil Engineering</p>
+                        <p style="font-size: 0.95rem; text-align: justify; margin-bottom: 8px;">
+                            An adorned specialist with over 30 years of measured, referenceable success across High-Rise Construction, Slum Rehabilitation Authority (SRA) programs, and multi-tier real estate developments.
+                        </p>
+                        <p style="font-size: 0.95rem; text-align: justify;">
+                            Famously spearheaded the comprehensive technical Project Management execution of <strong>The Imperial Towers</strong>—which stood as South Asia's tallest residential architectural footprint during its construction timeline. Recipient of a formal Letter of Appreciation for exceptional corporate execution from Mr. Cyrus Mistry (Shapoorji Pallonji Group).
+                        </p>
+                    </div>
+                </div>
+                <p style="margin-top: 15px; font-size: 0.95rem; font-style: italic; color: #555;">
+                    Our core engineering and advisory teams unite elite credentials, pulling cross-functional project management specialists from premier institutions including IIT Bombay and IIM Calcutta.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="bg-light">
+        <h2 class="section-title">Consultancy & Delivery Expertise</h2>
+        <div class="grid-3">
+            <div class="card">
+                <h3>Core Construction Management</h3>
+                <ul>
+                    <li>End-to-End Project Management (PMC)</li>
+                    <li>Comprehensive Contract Administration</li>
+                    <li>Commercial Operations & Tendering Process</li>
+                    <li>Budget Formulation & Cash Flow Management</li>
+                    <li>Risk Analysis & Mitigation Roadmaps</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Technical Assurance & Audits</h3>
+                <ul>
+                    <li>Structural Health Monitoring & Detailed Reports</li>
+                    <li>Third-Party Quality & Worksite Safety Audits</li>
+                    <li>Quantity Estimation & Exhaustive Costing</li>
+                    <li>Technical Due Diligence & Strategic Advisory</li>
+                    <li>BIM (Building Information Modeling) Integration</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Specialized Infrastructure Study</h3>
+                <ul>
+                    <li>Urban Redevelopment Consultancy & Master Planning</li>
+                    <li>Real Estate Market Development & Feasibility Studies</li>
+                    <li>Landscape Design Studies & Engineering Architecture</li>
+                    <li>Greenfield & Brownfield Layout Infrastructure Asset Studies</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">Track Record & Portfolio Snapshots</h2>
+        <p style="text-align: center; max-width: 700px; margin: -2rem auto 3rem auto; color: #666;">
+            Our deep experience spans monumental projects across the Real Estate Space, Public Infrastructure, and Government Authority systems.
+        </p>
+        
+        <div style="overflow-x: auto;">
+            <table class="project-table">
+                <thead>
+                    <tr>
+                        <th>Project & Footprint Name</th>
+                        <th>Location Focus</th>
+                        <th>Project Classification</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>The Imperial Towers</strong></td>
+                        <td>Mumbai</td>
+                        <td><span class="badge">Premium Residential High-Rise</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vicinia by Shapoorji Pallonji</strong></td>
+                        <td>Mumbai</td>
+                        <td><span class="badge">Real Estate Space</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Khajekhalan Ghat (Patna Saheb)</strong></td>
+                        <td>Patna, Bihar</td>
+                        <td><span class="badge">Infrastructure Development (₹9.15 Cr)</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Royal Palm Banquet Layout</strong></td>
+                        <td>Urban Portfolio</td>
+                        <td><span class="badge">Commercial Space Execution</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hajipur Civil Works Plan</strong></td>
+                        <td>Hajipur, Bihar</td>
+                        <td><span class="badge">Public Infrastructure (₹9.27 Cr)</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Runwal Green / ITC Grand Central / Four Seasons</strong></td>
+                        <td>Mumbai / Pan-India</td>
+                        <td><span class="badge">Hospitality & Elite Residential</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Government Public Works (UPPCL / RES / Irrigation)</strong></td>
+                        <td>Lucknow / Varanasi Circles</td>
+                        <td><span class="badge">Canals, Bridges, Roads & Hospitals</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p style="margin-top: 25px; font-size: 0.95rem; color: #555; font-weight: 600;">
+            Our Elite Institutional Clientele Includes:
+            <span style="font-weight: 400; color: #777; margin-left: 5px;">
+                Indian Oil Corporation Limited (IOCL), Shapoorji Pallonji, Indian Railways, IRCON International, Engineers India Limited (EIL), East Central Railway, and corporate developers.
+            </span>
+        </p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="bg-light">
+        <h2 class="section-title">Connect with RCCPL</h2>
+        <div class="grid-2">
+            <div class="contact-info">
+                <h3>Partner With Us</h3>
+                <p>We believe in exceeding expectations by achieving global benchmarks for visibility, structural reliability, and operational integrity.</p>
+                <br>
+                <p><strong>Primary Operations Hub:</strong><br>Mumbai, Maharashtra, India</p>
+                <p><strong>Regional Infrastructure Office:</strong><br>Patna, Bihar, India</p>
+                <p><strong>Corporate Inquiry Email:</strong><br>contact@rccpl.com</p>
+            </div>
+            <div class="contact-form">
+                <form>
+                    <input type="text" placeholder="Full Name / Corporate Entity" required>
+                    <input type="email" placeholder="Corporate Email Address" required>
+                    <input type="text" placeholder="Project Nature (e.g., PMC, SRA, Audit)">
+                    <textarea placeholder="Detail your project specifications or consultation requirement..." rows="5" required></textarea>
+                    <button type="button" class="btn" onclick="alert('Thank you for reaching out to RCCPL. Our technical advisory team will coordinate with your office shortly.')">Initiate Consultation</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Rai Construction Consultancy Private Limited (RCCPL). All Rights Reserved.</p>
+        <p style="font-size: 0.75rem; color: #aaa; margin-top: 5px;">Exceeding Expectations by Achieving Benchmarks in Transparency, Reliability & Integrity.</p>
+    </footer>
+
+</body>
+</html>
